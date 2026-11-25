@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name · Product Designer at Studio Name</title>
+  <meta name="description" content="Digital business card for Your Name, Product Designer at Studio Name.">
+  <meta name="theme-color" content="#eef1f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1513" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Your Name · Product Designer">
+  <meta property="og:description" content="Save my contact details, or scan to connect.">
+  <meta property="og:type" content="profile">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>try{var t=localStorage.getItem('card-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#card">Skip to card</a>
+
+  <!-- Inline icon sprite: no extra requests, inherits currentColor -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700L12 6.300M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700L12 17.700" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path d="M5 9h3v10H5zM6.500 4.500a1.700 1.700 0 1 1 0 3.400 1.700 1.700 0 0 1 0-3.400zM11 9h3v1.500c.6-1 1.800-1.700 3.300-1.700 3 0 3.700 2 3.700 4.600V19h-3v-5c0-1.200 0-2.500-1.600-2.500S14 12.700 14 14v5h-3z" fill="currentColor"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-2.800 17.500c.5.1.6-.2.6-.5v-1.700c-2.500.5-3-1.200-3-1.200-.4-1-1-1.300-1-1.300-.8-.6.1-.6.1-.6.900.1 1.400.9 1.400.9.800 1.400 2.100 1 2.600.8.100-.6.300-1 .6-1.200-2-.2-4.100-1-4.100-4.400 0-1 .4-1.800.9-2.400-.1-.2-.4-1.100.1-2.400 0 0 .8-.2 2.500.9a8.600 8.600 0 0 1 4.600 0c1.700-1.100 2.500-.9 2.500-.9.500 1.300.2 2.200.1 2.400.6.600.9 1.400.9 2.400 0 3.400-2.100 4.200-4.100 4.400.3.300.6.800.6 1.600V20c0 .3.200.6.600.5A9 9 0 0 0 12 3z" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4m0 0L8 8m4-4l4 4M5 12v7h14v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></symbol>
+  </svg>
+
+  <main class="page">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="icon" aria-hidden="true"><use href="#i-theme"/></svg>
+    </button>
+
+    <article class="card" id="card" aria-labelledby="name">
+      <header class="card__head">
+        <img class="card__avatar" src="assets/avatar.svg" width="96" height="96" alt="Portrait of Your Name" fetchpriority="high">
+        <div>
+          <h1 class="card__name" id="name">Your Name</h1>
+          <p class="card__role">Product Designer, <span>Studio Name</span></p>
+        </div>
+      </header>
+
+      <p class="card__bio">I design calm, fast interfaces for teams that ship. Open to freelance projects and long-term partnerships in fintech and healthcare.</p>
+
+      <p class="card__loc"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Jeddah, Saudi Arabia</p>
+
+      <ul class="contacts" aria-label="Contact details">
+        <li class="contacts__item">
+          <a class="contacts__link" href="mailto:hello@example.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>hello@example.com</span></a>
+          <button class="icon-btn" type="button" data-copy="hello@example.com" data-label="email address"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="sr">Copy email address</span></button>
+        </li>
+        <li class="contacts__item">
+          <a class="contacts__link" href="tel:+966500000000"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span dir="ltr">+966 50 000 0000</span></a>
+          <button class="icon-btn" type="button" data-copy="+966 50 000 0000" data-label="phone number"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="sr">Copy phone number</span></button>
+        </li>
+      </ul>
+
+      <nav class="social" aria-label="Social and portfolio links">
+        <a class="chip" href="https://example.com" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>Portfolio</a>
+        <a class="chip" href="https://linkedin.com/in/your-handle" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-in"/></svg>LinkedIn</a>
+        <a class="chip" href="https://github.com/your-handle" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-gh"/></svg>GitHub</a>
+        <a class="chip" href="https://x.com/your-handle" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>X</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn btn--primary" type="button" data-vcard><svg class="icon" aria-hidden="true"><use href="#i-dl"/></svg>Save contact</button>
+        <button class="btn" type="button" data-share hidden><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share card</button>
+        <a class="btn" href="mailto:hello@example.com?subject=Let%27s%20talk">Book a call</a>
+      </div>
+
+      <!-- <details> works without JS; script.js draws the QR inside -->
+      <details class="qr" data-qr>
+        <summary>Scan to open this card</summary>
+        <div class="qr__body">
+          <div class="qr__code" data-qr-target role="img" aria-label="QR code linking to this card"></div>
+          <p class="qr__url"><span data-short-url></span>
+            <button class="link-btn" type="button" data-copy-url>Copy link</button></p>
+        </div>
+      </details>
+    </article>
+  </main>
+
+  <p class="toast" role="status" aria-live="polite" data-toast></p>
+
+  <!-- QR library (pinned, optional). If blocked, the QR panel hides itself. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

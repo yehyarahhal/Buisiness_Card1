@@ -1,0 +1,115 @@
+/* ==========================================================
+   Digital business card · styles.css
+   Structure: tokens → base → blocks (BEM) → print
+   Customize: change the variables in :root and the dark block.
+   ========================================================== */
+
+:root {
+  color-scheme: light dark;
+  /* Light palette (text/bg ≥ 4.5:1, accent on surface ≥ 4.5:1) */
+  --bg: #eef1f0;
+  --surface: #ffffff;
+  --ink: #0f1f1c;
+  --ink-soft: #3d4f4b;      /* 8.4:1 on surface */
+  --line: #cdd8d5;
+  --accent: #0b6b5c;        /* 6.3:1 on surface */
+  --accent-ink: #ffffff;
+  --focus: #0b6b5c;
+  --shadow: 0 1px 2px rgb(15 31 28 / .08), 0 12px 32px -12px rgb(15 31 28 / .25);
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Arabic", sans-serif;
+  --radius: 20px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+/* Dark palette: system preference unless user chose a theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg:#0c1513; --surface:#14211e; --ink:#e6efec; --ink-soft:#a9bcb7; --line:#27403a; --accent:#5fd1b9; --accent-ink:#04201a; --focus:#5fd1b9; --shadow:0 12px 32px -12px rgb(0 0 0 / .6); }
+}
+:root[data-theme="dark"] { --bg:#0c1513; --surface:#14211e; --ink:#e6efec; --ink-soft:#a9bcb7; --line:#27403a; --accent:#5fd1b9; --accent-ink:#04201a; --focus:#5fd1b9; --shadow:0 12px 32px -12px rgb(0 0 0 / .6); }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-height: 100dvh; background: var(--bg); color: var(--ink); font: 1rem/1.55 var(--font-body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.icon { width: 1.25em; height: 1.25em; flex: none; }
+.skip { position: absolute; inset-inline-start: 1rem; top: -4rem; background: var(--accent); color: var(--accent-ink); padding: .5rem 1rem; border-radius: 8px; z-index: 10; }
+.skip:focus { top: 1rem; }
+
+/* Layout */
+.page { display: grid; place-items: center; padding: clamp(1rem, 4vw, 3rem) 1rem; min-height: 100dvh; position: relative; }
+
+/* Card: the one entrance animation on the page */
+.card { width: min(100%, 30rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(1.25rem, 5vw, 2rem); display: grid; gap: 1.25rem; animation: rise .6s var(--ease) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+.card__head { display: flex; gap: 1rem; align-items: center; }
+.card__avatar { width: 6rem; height: 6rem; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); outline: 2px solid var(--accent); }
+.card__name { margin: 0; font: 600 clamp(2rem, 8vw, 2.6rem)/1.05 var(--font-display); letter-spacing: -.02em; text-wrap: balance; }
+.card__role { margin: .35rem 0 0; color: var(--ink-soft); }
+.card__role span { color: var(--ink); font-weight: 600; }
+.card__bio { margin: 0; max-width: 60ch; font-family: var(--font-display); font-size: 1.1rem; line-height: 1.6; }
+.card__loc { margin: 0; display: flex; align-items: center; gap: .5rem; color: var(--ink-soft); font-size: .95rem; }
+
+/* Contacts */
+.contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.contacts__item { display: flex; align-items: center; gap: .5rem; border: 1px solid var(--line); border-radius: 14px; padding-inline-start: .25rem; }
+.contacts__link { flex: 1; display: flex; align-items: center; gap: .75rem; min-height: 48px; padding: .25rem .75rem; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.contacts__link:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.contacts__link .icon { color: var(--accent); }
+.icon-btn { min-width: 48px; min-height: 48px; display: grid; place-items: center; background: none; border: 0; border-inline-start: 1px solid var(--line); color: var(--ink-soft); cursor: pointer; border-start-end-radius: 13px; border-end-end-radius: 13px; transition: color .2s, background-color .2s; }
+.icon-btn:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.icon-btn[data-done] { color: var(--accent); }
+
+/* Social chips */
+.social { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 1rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: .95rem; transition: border-color .2s, color .2s; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Buttons */
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.btn { flex: 1 1 8rem; display: inline-flex; justify-content: center; align-items: center; gap: .5rem; min-height: 48px; padding: 0 1.25rem; border-radius: 14px; border: 1.5px solid var(--accent); background: transparent; color: var(--accent); font: 600 1rem var(--font-body); text-decoration: none; cursor: pointer; transition: transform .15s var(--ease), background-color .2s; }
+.btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.btn:active { transform: scale(.97); }
+.btn--primary { background: var(--accent); color: var(--accent-ink); flex-basis: 100%; }
+.btn--primary:hover { background: var(--accent); filter: brightness(1.08); }
+.btn[hidden] { display: none; }
+
+/* QR panel */
+.qr { border-top: 1px solid var(--line); padding-top: 1rem; }
+.qr summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.qr__body { display: grid; justify-items: center; gap: .75rem; padding-top: .5rem; }
+.qr[open] .qr__body { animation: rise .35s var(--ease) both; }
+.qr__code { background: #fff; padding: 12px; border-radius: 12px; line-height: 0; border: 1px solid var(--line); } /* always white: scanners need contrast */
+.qr__url { margin: 0; font-size: .9rem; color: var(--ink-soft); display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; overflow-wrap: anywhere; }
+.link-btn { background: none; border: 0; padding: .25rem; color: var(--accent); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; min-height: 44px; }
+
+/* Theme toggle */
+.theme-toggle { position: absolute; top: .75rem; inset-inline-end: .75rem; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.theme-toggle .icon { transition: transform .4s var(--ease); }
+.theme-toggle[aria-pressed="true"] .icon { transform: rotate(180deg); }
+
+/* Toast */
+.toast { position: fixed; inset-inline: 0; bottom: 1.5rem; margin: auto; width: max-content; max-width: 90vw; background: var(--ink); color: var(--bg); padding: .65rem 1.1rem; border-radius: 12px; font-weight: 500; opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s var(--ease); pointer-events: none; }
+.toast.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media (forced-colors: active) { .btn, .chip, .contacts__item { border-color: ButtonText; } }
+
+/* Print: flat, ink-friendly, no controls */
+@media print {
+  body { background: #fff; color: #000; }
+  .page { display: block; padding: 0; }
+  .card { box-shadow: none; border: 1px solid #000; animation: none; break-inside: avoid; }
+  .theme-toggle, .actions, .icon-btn, .toast, .skip, .qr summary, .link-btn { display: none !important; }
+  .qr { border: 0; }
+  .qr > .qr__body { display: grid; }   /* QR prints even when collapsed */
+  a { color: #000; text-decoration: none; }
+  .social a::after { content: " (" attr(href) ")"; font-size: .75em; }
+  .contacts__item, .chip { border-color: #000; }
+}
